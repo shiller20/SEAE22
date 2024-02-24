@@ -56,5 +56,26 @@ def read_sensors():
 # Other parts of the implementation such as printing the information
 # for the operator are also missing and would need to be implemented.
 
+def show_sensor_data():
+    # TODO: Checks if there are corrupted values
+    result = read_sensors()
+    n = 0
+    while n < len(result):
+        for i in result[n]:
+            if type(i) != float:
+                print(f"Invalid number occurred in Sensor{n+1}" )
+        n+=1
+
+def sensor_timeline():
+    # TODO: first run show_sensor_data to make sure no corrupted data.
+    # This function checks if the data timeline is complete. (24 hours)
+    result = read_sensors()
+    n = 0
+    while n < len(result):
+        for i in result[n]:
+            if len(result[n]) != 24:
+                print(f"Some data is missing in Sensor{n+1}.It contains {len(result[n])} values instead of 24" )
+        n+=1
+
 if (__name__ == "__main__"):
     main()
